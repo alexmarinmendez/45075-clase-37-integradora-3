@@ -10,3 +10,15 @@ export const create = async(req, res) => {
     const userNew = await UserService.create(user)
     res.json({ user: userNew })
 }
+
+export const addTicket = async(req, res) => {
+    const { user: userID, ticket: ticketID } = req.query
+    const result = await UserService.addTicket(userID, ticketID)
+    res.json({ result })
+}
+
+export const reminder = async(req, res) => {
+    const { userID } = req.params
+    const result = await UserService.reminder(userID)
+    res.send(result)
+}
